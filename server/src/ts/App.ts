@@ -30,6 +30,14 @@ class App {
 		// Copy files to public
 		fse.copySync('./node_modules/jquery/dist/jquery.js', './client/public/js/jquery.js');
 		fse.copySync('./node_modules/angular/angular.js', './client/public/js/angular.js');
+		fse.copySync('./node_modules/angular-animate/angular-animate.js', './client/public/js/angular-animate.js');
+		fse.copySync('./node_modules/angular-aria/angular-aria.js', './client/public/js/angular-aria.js');
+		fse.copySync('./node_modules/angular-messages/angular-messages.js', './client/public/js/angular-messages.js');
+		fse.copySync('./node_modules/angular-material/angular-material.css', './client/public/css/angular-material.css');
+		fse.copySync('./node_modules/angular-material/angular-material.js', './client/public/js/angular-material.js');
+		fse.copySync('./node_modules/moment/moment.js', './client/public/js/moment.js');
+
+		fse.copySync('./client/src/templates/', './client/public/templates/');
 		fse.copySync('./client/src/css/styles.css', './client/public/css/styles.css');
 		fse.copySync('./client/dist/ts/app.js', './client/public/js/app.js');
 		fse.copySync('./client/dist/ts/app.js.map', './client/public/js/app.js.map');

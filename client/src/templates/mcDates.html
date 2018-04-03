@@ -1,0 +1,27 @@
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+	<md-datepicker
+			name="dateFrom"
+			md-placeholder="Дата 1"
+			mc-date-convert
+			ng-model="$ctrl.dateFrom"
+			ng-change="$ctrl.onDatesChange()"
+			md-max-date="$ctrl.dateToDate">
+	</md-datepicker>
+
+	<md-datepicker
+			name="dateTo"
+			md-placeholder="Дата 2"
+			mc-date-convert
+			ng-model="$ctrl.dateTo"
+			ng-change="$ctrl.onDatesChange()"
+			md-min-date="$ctrl.dateFromDate">
+	</md-datepicker>
+</section>
+
+<section layout="row" layout-sm="column" layout-align="center center" layout-wrap>
+	<md-button class="btn-date" ng-click="$ctrl.setYesterday()">Вчера</md-button>
+	<md-button class="btn-date" ng-click="$ctrl.setToday()">Сегодня</md-button>
+	<md-button class="btn-date" ng-click="$ctrl.setTwoWeeks()">2 недели</md-button>
+	<md-button class="btn-date" ng-click="$ctrl.setMonth()">Месяц</md-button>
+	<md-button class="btn-date" ng-click="$ctrl.setAll()">Все</md-button>
+</section>

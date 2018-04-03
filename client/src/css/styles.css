@@ -7,4 +7,12 @@ a {
 	color: #00B7FF;
 }
 
+.center {
+	text-align: center;
+}
+
+.btn-date {
+	font-size: 12px;
+}
+
 /* EOF */

@@ -62,8 +62,7 @@ typings/
 #===================================================================================================
 
 client/dist/
-client/public/css/
-client/public/js/
+client/public/
 
 server/dist/
 

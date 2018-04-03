@@ -8,7 +8,9 @@
 	"files": [
 		"../node_modules/@types/jquery/index.d.ts",
 		"../node_modules/@types/angular/index.d.ts",
-		"../node_modules/@types/angular-material/index.d.ts"
+		"../node_modules/@types/angular-animate/index.d.ts",
+		"../node_modules/@types/angular-material/index.d.ts",
+		"../node_modules/moment/moment.d.ts"
 	],
 	"include": [
 		"src/ts/**/*.ts"
