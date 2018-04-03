@@ -15,7 +15,7 @@ var App = /** @class */ (function () {
         var cookieParser = require('cookie-parser');
         var logger = require('morgan');
         // view engine setup
-        this.app.set('views', './views');
+        this.app.set('views', './server/views');
         this.app.set('view engine', 'pug');
         this.app.use(logger('dev'));
         this.app.use(express.json());
