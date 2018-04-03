@@ -28,6 +28,7 @@ class App {
 		this.app.use(express.static('./client/public'));
 
 		// Copy files to public
+		fse.copySync('./node_modules/jquery/dist/jquery.js', './client/public/js/jquery.js');
 		fse.copySync('./client/dist/app.js', './client/public/js/app.js');
 		fse.copySync('./client/dist/app.js.map', './client/public/js/app.js.map');
 

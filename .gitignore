@@ -62,6 +62,7 @@ typings/
 #===================================================================================================
 
 client/dist/
+client/public/js/jquery.js
 client/public/js/app.js
 client/public/js/app.js.map
 
