@@ -57,3 +57,14 @@ typings/
 # dotenv environment variables file
 .env
 
+#===================================================================================================
+# Custom
+#===================================================================================================
+
+client/dist/
+client/public/js/app.js
+client/public/js/app.js.map
+
+server/dist/
+
+# EOF
