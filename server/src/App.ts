@@ -29,6 +29,8 @@ class App {
 
 		// Copy files to public
 		fse.copySync('./node_modules/angular/angular.js', './client/public/js/angular.js');
+		fse.copySync('./client/dist/app.js', './client/public/js/app.js');
+		fse.copySync('./client/dist/app.js.map', './client/public/js/app.js.map');
 
 		this.app.use('/', indexRouter);
 

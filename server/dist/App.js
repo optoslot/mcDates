@@ -24,6 +24,8 @@ var App = /** @class */ (function () {
         this.app.use(express.static('./client/public'));
         // Copy files to public
         fse.copySync('./node_modules/angular/angular.js', './client/public/js/angular.js');
+        fse.copySync('./client/dist/app.js', './client/public/js/app.js');
+        fse.copySync('./client/dist/app.js.map', './client/public/js/app.js.map');
         this.app.use('/', index_1.default);
         // catch 404 and forward to error handler
         this.app.use(function (req, res, next) {

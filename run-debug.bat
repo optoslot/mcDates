@@ -1,3 +1,8 @@
+rem Compile client
+cd ./client
+call tsc
+cd ..
+
 rem Compile server
 cd ./server
 call tsc
