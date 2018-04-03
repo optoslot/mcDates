@@ -1,3 +1,4 @@
-SET DEBUG=mcdates:* & npm start
+call tsc
+set DEBUG=mcdates:* & npm start
 
 rem EOF
