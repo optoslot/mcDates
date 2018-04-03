@@ -30,8 +30,9 @@ class App {
 		// Copy files to public
 		fse.copySync('./node_modules/jquery/dist/jquery.js', './client/public/js/jquery.js');
 		fse.copySync('./node_modules/angular/angular.js', './client/public/js/angular.js');
-		fse.copySync('./client/dist/app.js', './client/public/js/app.js');
-		fse.copySync('./client/dist/app.js.map', './client/public/js/app.js.map');
+		fse.copySync('./client/src/css/styles.css', './client/public/css/styles.css');
+		fse.copySync('./client/dist/ts/app.js', './client/public/js/app.js');
+		fse.copySync('./client/dist/ts/app.js.map', './client/public/js/app.js.map');
 
 		this.app.use('/', indexRouter);
 

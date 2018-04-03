@@ -1,3 +1,3 @@
-module.exports = require('./server/dist/App').default;
+module.exports = require('./server/dist/ts/App').default;
 
 // EOF

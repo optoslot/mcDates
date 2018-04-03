@@ -2,7 +2,7 @@
 	"compilerOptions": {
 		"target": "es5",
 		"module": "commonjs",
-		"outDir": "dist",
+		"outDir": "dist/ts",
 		"sourceMap": true
 	},
 	"files": [
@@ -10,7 +10,7 @@
 		"../node_modules/@types/express/index.d.ts"
 	],
 	"include": [
-		"src/**/*.ts"
+		"src/ts/**/*.ts"
 	],
 	"exclude": [
 		"node_modules"
