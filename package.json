@@ -7,10 +7,12 @@
   },
   "dependencies": {
     "@types/angular": "^1.6.9",
+    "@types/angular-material": "^1.1.58",
     "@types/express": "^4.11.1",
     "@types/jquery": "^1.10.34",
     "@types/node": "^9.6.1",
     "angular": "^1.6.9",
+    "angular-material": "^1.1.8",
     "cookie-parser": "~1.4.3",
     "debug": "~2.6.9",
     "express": "~4.16.0",
