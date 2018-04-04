@@ -196,9 +196,16 @@ class mcDatesCtrl {
 		this.dateToDate = null;
 
 		this.$timeout(() => {
+			const isChanged: boolean =
+				this.dateFrom !== dateFrom
+				|| this.dateTo !== dateTo;
+
 			this.dateFrom = dateFrom;
 			this.dateTo = dateTo;
-			this.onDatesChange();
+
+			if (isChanged) {
+				this.onDatesChange();
+			}
 		}, 0);
 	}
 
