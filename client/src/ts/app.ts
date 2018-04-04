@@ -80,16 +80,47 @@ class mcDatesRootCtrl {
 	public date1: string;
 	public date2: string;
 
-	public constructor() {
+	// Injections
+
+	private $mdDialog: any;
+
+	public constructor($mdDialog) {
+		// Injections
+
+		this.$mdDialog = $mdDialog;
+
+		// Init
+
 		this.date1 = null;
 		this.date2 = null;
 	}
 
 	public changeDates(): void {
 		setTimeout(() => {
-			alert(`${this.date1} - ${this.date2}`);
+			this.showAlert(
+				null,
+				'Диалог с информацией что был изменен диапазон даты',
+				'Диапазон даты был изменен',
+				`${this.date1 || '[Не выбрано]'} ${this.date2 || '[Не выбрано]'}`
+			);
 		}, 0);
 	}
+
+	private showAlert(ev, ariaLabel, title, textContent) {
+		// Appending dialog to document.body to cover sidenav in docs app
+		// Modal dialogs should fully cover application
+		// to prevent interaction outside of dialog
+		this.$mdDialog.show(
+			this.$mdDialog.alert()
+				.parent(angular.element(document.querySelector('body')))
+				.clickOutsideToClose(true)
+				.title(title)
+				.textContent(textContent)
+				.ariaLabel(ariaLabel)
+				.ok('ОК')
+				.targetEvent(ev)
+		);
+	};
 }
 
 class mcDatesRootComponent implements angular.IComponentOptions {
@@ -116,8 +147,6 @@ class mcDatesCtrl {
 	// Fields and properties
 	//----------------------------------------------------------------------------------------------
 
-	private _mcDateUtils: any;
-
 	public dateFromDate: Date;
 	public dateToDate: Date;
 
@@ -130,7 +159,7 @@ class mcDatesCtrl {
 
 	public set dateFrom(dateFrom: string) {
 		this._dateFrom = dateFrom;
-		this.dateFromDate = this._mcDateUtils.strToDate(dateFrom);
+		this.dateFromDate = this.mcDateUtils.strToDate(dateFrom);
 	}
 
 	public get dateTo(): string {
@@ -139,15 +168,19 @@ class mcDatesCtrl {
 
 	public set dateTo(dateTo: string) {
 		this._dateTo = dateTo;
-		this.dateToDate = this._mcDateUtils.strToDate(dateTo);
+		this.dateToDate = this.mcDateUtils.strToDate(dateTo);
 	}
 
 	//----------------------------------------------------------------------------------------------
 	// Contructor
 	//----------------------------------------------------------------------------------------------
 
-	public constructor(mcDateUtils) {
-		this._mcDateUtils = mcDateUtils;
+	private $timeout: any;
+	private mcDateUtils: any;
+
+	public constructor($timeout, mcDateUtils) {
+		this.$timeout = $timeout;
+		this.mcDateUtils = mcDateUtils;
 	}
 
 	//----------------------------------------------------------------------------------------------
@@ -158,34 +191,50 @@ class mcDatesCtrl {
 		this['mcChange']();
 	}
 
+	private setDateFromToDefer(dateFrom: string, dateTo: string): void {
+		this.dateFromDate = null;
+		this.dateToDate = null;
+
+		this.$timeout(() => {
+			this.dateFrom = dateFrom;
+			this.dateTo = dateTo;
+			this.onDatesChange();
+		}, 0);
+	}
+
 	public setYesterday() {
-		this.dateFrom = this._mcDateUtils.dateToStr(moment().add(-1, 'days'));
-		this.dateTo = this._mcDateUtils.dateToStr(moment().add(-1, 'days'));
-		this.onDatesChange();
+		this.setDateFromToDefer(
+			this.mcDateUtils.dateToStr(moment().add(-1, 'days')),
+			this.mcDateUtils.dateToStr(moment().add(-1, 'days'))
+		);
 	}
 
 	public setToday() {
-		this.dateFrom = this._mcDateUtils.dateToStr(moment());
-		this.dateTo = this._mcDateUtils.dateToStr(moment());
-		this.onDatesChange();
+		this.setDateFromToDefer(
+			this.mcDateUtils.dateToStr(moment()),
+			this.mcDateUtils.dateToStr(moment())
+		);
 	}
 
 	public setTwoWeeks() {
-		this.dateFrom = this._mcDateUtils.dateToStr(moment().add(-14, 'days'));
-		this.dateTo = this._mcDateUtils.dateToStr(moment());
-		this.onDatesChange();
+		this.setDateFromToDefer(
+			this.mcDateUtils.dateToStr(moment().add(-14, 'days')),
+			this.mcDateUtils.dateToStr(moment())
+		);
 	}
 
 	public setMonth() {
-		this.dateFrom = this._mcDateUtils.dateToStr(moment().add(-30, 'days'));
-		this.dateTo = this._mcDateUtils.dateToStr(moment());
-		this.onDatesChange();
+		this.setDateFromToDefer(
+			this.mcDateUtils.dateToStr(moment().add(-30, 'days')),
+			this.mcDateUtils.dateToStr(moment())
+		);
 	}
 
 	public setAll() {
-		this.dateFrom = null;
-		this.dateTo = null;
-		this.onDatesChange();
+		this.setDateFromToDefer(
+			null,
+			null
+		);
 	}
 }
 
